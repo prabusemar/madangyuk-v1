@@ -19,8 +19,8 @@ MadangYuk adalah aplikasi web katalog restoran yang dibuat sebagai bagian dari s
 ## Cara Menjalankan Aplikasi
 1. Clone repository ini.
    ```bash
-   git clone https://github.com/username/madangyuk.git
-   cd madangyuk
+   git clone https://github.com/prabusemar/madangyuk-v1.git
+   cd madangyuk-v1
    ```
 2. Install dependencies menggunakan npm.
    ```bash
