@@ -3,11 +3,27 @@ import CONFIG from './config';
 import '../styles/main.css';
 import { openDB } from 'idb';
 
+// Register Service Worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then((registration) => {
+        console.log('Service Worker berhasil didaftarkan:', registration);
+      })
+      .catch((error) => {
+        console.log('Service Worker gagal didaftarkan:', error);
+      });
+  });
+}
+
 // Inisialisasi database dengan idb
 const dbPromise = openDB(CONFIG.DATABASE_NAME, CONFIG.DATABASE_VERSION, {
   upgrade(db) {
     if (!db.objectStoreNames.contains(CONFIG.OBJECT_STORE_NAME)) {
       db.createObjectStore(CONFIG.OBJECT_STORE_NAME, { keyPath: 'id' });
+    }
+    if (!db.objectStoreNames.contains('restaurant-detail')) {
+      db.createObjectStore('restaurant-detail', { keyPath: 'id' });
     }
   },
 });
@@ -85,9 +101,28 @@ const showRestaurantDetail = async (restaurantId) => {
   const favoriteList = document.getElementById('favorite-list');
 
   try {
-    const response = await fetch(`${CONFIG.BASE_URL}detail/${restaurantId}`);
-    const data = await response.json();
-    const restaurant = data.restaurant;
+    let restaurant;
+    const db = await dbPromise;
+    // Coba ambil dari IndexedDB dulu
+    const cachedRestaurant = await db.get('restaurant-detail', restaurantId);
+    
+    if (cachedRestaurant) {
+      restaurant = cachedRestaurant;
+      console.log('Mengambil data dari cache');
+    } else {
+      // Jika tidak ada di cache, ambil dari API
+      try {
+        const response = await fetch(`${CONFIG.BASE_URL}detail/${restaurantId}`);
+        const data = await response.json();
+        restaurant = data.restaurant;
+        // Simpan ke IndexedDB untuk penggunaan offline
+        await db.put('restaurant-detail', restaurant);
+        console.log('Menyimpan data ke cache');
+      } catch (error) {
+        console.error('Gagal mengambil data dari API:', error);
+        return;
+      }
+    }
 
     // Cek Status Favorit dan Atur Teks Tombol Favorit
     const favoriteStatus = await isFavorite(restaurantId);
@@ -129,7 +164,13 @@ const showRestaurantDetail = async (restaurantId) => {
     });
 
   } catch (error) {
-    console.error('Error fetching restaurant detail:', error);
+    console.error('Error menampilkan detail restoran:', error);
+    restaurantDetail.innerHTML = `
+      <div class="restaurant-detail-card">
+        <p>Maaf, terjadi kesalahan saat memuat detail restoran. Silakan coba lagi nanti.</p>
+        <button id="back-button" class="back-button">Back to List</button>
+      </div>
+    `;
   }
 };
 
@@ -200,15 +241,4 @@ document.getElementById('favorite-link').addEventListener('click', (e) => {
 // Saat Konten Dimuat
 document.addEventListener('DOMContentLoaded', () => {
   displayRestaurants();
-
-  // Daftarkan Service Worker
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
-      .then((registration) => {
-        console.log('Service Worker terdaftar dengan scope:', registration.scope);
-      })
-      .catch((error) => {
-        console.log('Pendaftaran Service Worker gagal:', error);
-      });
-  }
 });
