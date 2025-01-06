@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+@import './_skipToContent';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #FAEBD7; /* Sama seperti MadangYuk */
+}
+
+main {
+  outline: none;
+  margin-top: 500px; /* Tambahkan margin untuk menghindari tumpang tindih dengan hero dan navbar */
+}
+
+/* Skip to Content */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: #333333;
+  color: #fff;
+  padding: 8px;
+  z-index: 100;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: top 0.3s;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FF6347; /* Warna branding utama */
+  color: white;
+  padding: 0.5rem 1rem;
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: calc(100% - 2rem);
+  max-width: 1200px;
+  z-index: 100;
+
+  &__icon-text {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    i {
+      font-size: 1.8rem;
+    }
+
+    span {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+
+  &__list {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #FF6347;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+
+    &.active {
+      display: flex;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem;
+      text-align: center;
+
+      &:hover {
+        background-color: #e6533d;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  &-hamburger__button {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+  }
+
+  @media (min-width: 768px) {
+    &__list {
+      display: flex;
+      flex-direction: row;
+      position: static;
+      transform: none;
+      background-color: transparent;
+      padding: 0;
+      box-shadow: none;
+      gap: 2rem;
+    }
+
+    &-hamburger__button {
+      display: none;
+    }
+  }
+}
+
+/* Hero Section */
+.hero {
+  background-image: url('../public/images/heros/hero-image_2.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: absolute; /* Tetapkan hero sebagai elemen tetap */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.hero-content {
+  z-index: 2;
+
+  h2 {
+    font-size: 2.5rem;
+    margin: 0;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero {
+    height: 500px;
+  }
+
+  .hero-content h2 {
+    font-size: 3.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1.5rem;
+  }
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #FF6347;
+  color: white;
+  font-size: 1rem;
+}

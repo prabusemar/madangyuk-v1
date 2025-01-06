@@ -1,75 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MadangYuk</title>
-  <link rel="stylesheet" href="../styles/main.css">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Restaurant App</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="manifest" href="../public/manifest.json">
+
 </head>
 
 <body>
-  <!-- Skip to content link for accessibility -->
-  <a href="#main-content" class="skip-link">Skip to content</a>
+  <!-- skip to content -->
+  <button class="skip-to-content">Skip to content</button>
 
-  <!-- App Bar -->
-  <header>
-    <nav class="app-bar">
-      <div class="brand">
-        <i class="fas fa-utensils fa-2x"></i>
-        <h1>MadangYuk</h1>
-      </div>
-      <!-- Tombol Toggle Menu -->
-      <button id="menu-toggle" aria-label="Open Menu" aria-expanded="false">☰</button>
-      <!-- Daftar Navigasi -->
-      <ul id="menu" class="nav-links" style="display: none;">
-        <li><a href="/" id="home-link"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="#favorite-list" id="favorite-link"><i class="fas fa-star"></i> Favorite</a></li>
-        <li><a href="https://github.com/prabusemar" target="_blank" rel="noopener"><i class="fas fa-info-circle"></i>
-            About Us</a></li>
-      </ul>
-    </nav>
-  </header>
+  <app-bar></app-bar>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h2>Welcome to MadangYuk</h2>
-      <p>Find the best restaurants in your city.</p>
-    </div>
-  </section>
+  <main id="main-content" tabindex="0">
+    <!--    <hero-app></hero-app>-->
+    <!--    <list-news-restaurant></list-news-restaurant>-->
+    <!--    <list-restaurant></list-restaurant>-->
 
-  <!-- Main Content -->
-  <main id="main-content">
-    <!-- Daftar Restoran -->
-    <h2 class="section-title">Restaurant List</h2>
-    <section id="restaurant-list">
-      <!-- Konten ini akan diisi oleh JavaScript -->
-    </section>
-
-    <!-- Kontainer untuk Detail Restoran -->
-    <section id="restaurant-detail" style="display: none;">
-      <!-- Detail restoran akan ditampilkan di sini oleh JavaScript -->
-    </section>
-
-    <!-- Halaman Favorit -->
-    <section id="favorite-list" style="display: none;">
-      <h2 class="section-title">Favorite Restaurants</h2>
-      <div id="favorite-restaurant-list">
-        <!-- Konten ini akan diisi oleh JavaScript -->
-      </div>
-    </section>
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <p>Copyright © 2024 - MadangYuk</p>
-  </footer>
+  <footer-app></footer-app>
 
-  <!-- JavaScript file to manage dynamic content -->
-  <script src="../scripts/index.js"></script>
+  <script src="https://use.fontawesome.com/b070c8f1df.js"></script>
 </body>
 
 </html>
