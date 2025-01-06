@@ -4,22 +4,40 @@
     "es2021": true,
     "node": true
   },
-  "extends": "airbnb-base",
+  "extends": "eslint:recommended",
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "globals": {
+    "document": "readonly",
+    "window": "readonly",
+    "HTMLElement": "readonly",
+    "customElements": "readonly",
+    "process": "readonly",
+    "navigator": "readonly",
+    "console": "readonly",
+    "alert": "readonly"
+  },
   "rules": {
-    "import/no-extraneous-dependencies": "off",
-    "import/prefer-default-export": "off",
-    "no-return-await": "off",
-    "no-alert": "off",
-    "no-underscore-dangle": "off",
-    "no-param-reassign": "off",
-    "consistent-return": "off",
-    "no-restricted-globals": "off",
-    "no-console": "off",
-    "no-useless-escape": "off",
-    "class-methods-use-this": "off"
+    "semi": ["error", "always"],                  // Wajib pakai titik koma
+    "quotes": ["error", "single"],               // Pakai tanda kutip tunggal
+    "indent": ["error", 2],                      // Indentasi 2 spasi
+    "comma-spacing": ["error", { "before": false, "after": true }], // Spasi setelah koma
+    "space-before-function-paren": ["error", "always"], // Spasi sebelum tanda kurung fungsi
+    "arrow-parens": ["error", "always"],         // Pakai tanda kurung pada arrow function
+    "no-trailing-spaces": "error",               // Tidak boleh ada spasi di akhir baris
+    "object-curly-spacing": ["error", "always"], // Spasi di dalam kurung kurawal
+    "array-bracket-spacing": ["error", "never"], // Tidak ada spasi di dalam kurung siku
+    "no-alert": "warn",                          // Peringatan jika menggunakan alert
+    "no-console": "off",                         // Perbolehkan console
+    "no-undef": "error",                        // Error jika variabel tidak terdefinisi
+    "prefer-const": "error",                    // Gunakan const jika variabel tidak berubah
+    "no-unused-vars": "warn",                   // Peringatan untuk variabel yang tidak digunakan
+    "eqeqeq": ["error", "always"],              // Gunakan === daripada ==
+    "brace-style": ["error", "1tbs"],           // Konsisten dengan gaya kurung kurawal
+    "class-methods-use-this": "off",             // Perbolehkan class method tanpa `this`
+    "no-param-reassign": "off",                  // Perbolehkan perubahan pada parameter fungsi
+    "consistent-return": "off"                   // Tidak memaksa return yang konsisten
   }
 }

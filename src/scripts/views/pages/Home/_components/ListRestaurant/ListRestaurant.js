@@ -2,11 +2,11 @@ import '../../../../../_components/RestaurantItem/RestaurantItem';
 import './ListRestaurant.scss';
 
 class ListRestaurant extends HTMLElement {
-  connectedCallback() {
+  connectedCallback () {
     this.render();
   }
 
-  render() {
+  render () {
     this.innerHTML = `
       <section class="list_restaurant">
         <header class="list_restaurant__header">

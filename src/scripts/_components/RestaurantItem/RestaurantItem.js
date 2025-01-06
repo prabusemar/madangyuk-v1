@@ -1,11 +1,11 @@
 import './RestaurantItem.scss';
 
 class RestaurantItem extends HTMLElement {
-  set dataRestaurant(data) {
+  set dataRestaurant (data) {
     this.render(data);
   }
 
-  render(data) {
+  render (data) {
     const {
       id,
       name,

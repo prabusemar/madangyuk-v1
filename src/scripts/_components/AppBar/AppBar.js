@@ -1,11 +1,11 @@
 import './AppBar.scss';
 
 class AppBar extends HTMLElement {
-  connectedCallback() {
+  connectedCallback () {
     this.render();
   }
 
-  render() {
+  render () {
     this.innerHTML = `
   <nav class="nav">
     <div class="nav__icon-text">

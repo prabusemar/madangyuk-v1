@@ -7,7 +7,7 @@ import LikeButtonInitiator from '../../../utils/like-button-initiator';
 import FavoriteRestaurantIdb from '../../../../data/favorite-restaurant-idb';
 
 const DetailRestaurant = {
-  render() {
+  render () {
     return `
       <detail-restaurant-information class="detail"></detail-restaurant-information>
       <div class="error__container">
@@ -17,18 +17,18 @@ const DetailRestaurant = {
     `;
   },
 
-  renderSkeleton(container) {
+  renderSkeleton (container) {
     container.innerHTML = '<skeleton-component height="100vh"></skeleton-component>';
   },
 
-  renderError(container, errorContainer, error) {
+  renderError (container, errorContainer, error) {
     container.innerHTML = '';
     errorContainer.innerHTML = `
       <status-message style="display: block; height:100vh;" message="${error?.response?.data?.message || 'Something when wrong'}"></status-message>
     `;
   },
 
-  async afterRender() {
+  async afterRender () {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const detailContainer = document.querySelector('detail-restaurant-information');
     const likeButtonContainer = document.querySelector('#likeButtonContainer');
@@ -53,7 +53,7 @@ const DetailRestaurant = {
     }
   },
 
-  postReview() {
+  postReview () {
     const postReviewContainer = document.querySelector('.detail__overview-body-reviews__form');
     const nameInput = postReviewContainer.querySelector('.input-name__review');
     const reviewInput = postReviewContainer.querySelector('.input-description__review');

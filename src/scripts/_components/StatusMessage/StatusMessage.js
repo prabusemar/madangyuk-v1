@@ -1,11 +1,11 @@
 class StatusMessage extends HTMLElement {
-  constructor() {
+  constructor () {
     super();
     this.message = this.getAttribute('message') || 'No data available';
     this.render();
   }
 
-  render() {
+  render () {
     this.innerHTML = `
       <div
         style="display: flex; justify-content: center; align-items: center; padding: 3rem;"

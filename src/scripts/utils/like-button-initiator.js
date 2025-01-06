@@ -3,7 +3,7 @@ import {
 } from '../views/pages/DetailRestaurant/_components/LikeButtonInitiator/like-button-initiator';
 
 const LikeButtonInitiator = {
-  async init({ likeButtonContainer, favoriteRestaurant, data }) {
+  async init ({ likeButtonContainer, favoriteRestaurant, data }) {
     this._likeButtonContainer = likeButtonContainer;
     this._favoriteRestaurant = favoriteRestaurant;
     this._restaurant = data.restaurant;
@@ -11,7 +11,7 @@ const LikeButtonInitiator = {
     await this._renderButton();
   },
 
-  async _renderButton() {
+  async _renderButton () {
     const { id } = this._restaurant;
 
     if (await this._isRestaurantExist(id)) {
@@ -21,12 +21,12 @@ const LikeButtonInitiator = {
     }
   },
 
-  async _isRestaurantExist(id) {
+  async _isRestaurantExist (id) {
     const restaurant = await this._favoriteRestaurant.getRestaurant(id);
     return !!restaurant;
   },
 
-  _renderLike() {
+  _renderLike () {
     this._likeButtonContainer.innerHTML = createLikeButtonTemplate();
 
     const likeButton = document.querySelector('#likeButton');
@@ -36,7 +36,7 @@ const LikeButtonInitiator = {
     });
   },
 
-  _renderLiked() {
+  _renderLiked () {
     this._likeButtonContainer.innerHTML = createLikedButtonTemplate();
 
     const likeButton = document.querySelector('#likeButton');

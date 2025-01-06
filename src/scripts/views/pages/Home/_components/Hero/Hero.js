@@ -1,11 +1,11 @@
 import './Hero.scss';
 
 class Hero extends HTMLElement {
-  connectedCallback() {
+  connectedCallback () {
     this.render();
   }
 
-  render() {
+  render () {
     this.innerHTML = `
       <section class="hero">
         <div class="hero__content">

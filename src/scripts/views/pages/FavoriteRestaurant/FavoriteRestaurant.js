@@ -1,21 +1,21 @@
 import FavRestaurantIdb from '../../../../data/favorite-restaurant-idb';
 
 const FavoriteRestaurant = {
-  render() {
+  render () {
     return `
       <hero-app></hero-app>
       <list-restaurant></list-restaurant>
     `;
   },
 
-  renderError(container, errorContainer, error) {
+  renderError (container, errorContainer, error) {
     container.innerHTML = '';
     errorContainer.innerHTML = `
       <status-message style="display: block; height:20vh;" message="${error}"></status-message>
     `;
   },
 
-  async afterRender() {
+  async afterRender () {
     const data = await FavRestaurantIdb.getAllRestaurants();
     const restaurantContainer = document.querySelector('.list_restaurant__container');
     const errorContainer = document.querySelector('.error__container');

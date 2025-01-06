@@ -6,20 +6,20 @@ import '../../../_components/StatusMessage/StatusMessage';
 import { GET_LIST_RESTAURANT } from '../../../services/restaurant.service';
 
 const Home = {
-  render() {
+  render () {
     return `
       <hero-app></hero-app>      
       <list-restaurant></list-restaurant>
     `;
   },
 
-  renderSkeleton(container) {
+  renderSkeleton (container) {
     container.innerHTML = Array(5).fill(
       '<skeleton-component height="300px"></skeleton-component>',
     ).join('');
   },
 
-  renderRestaurants(container, restaurants) {
+  renderRestaurants (container, restaurants) {
     container.innerHTML = '';
     restaurants.forEach((restaurant) => {
       const restaurantItemElement = document.createElement('restaurant-item');
@@ -28,14 +28,14 @@ const Home = {
     });
   },
 
-  renderError(container, errorContainer, error) {
+  renderError (container, errorContainer, error) {
     container.innerHTML = '';
     errorContainer.innerHTML = `
       <status-message message="${error?.response?.data?.message || 'Something when wrong'}"></status-message>
     `;
   },
 
-  async afterRender() {
+  async afterRender () {
     const containerResult = document.querySelector('.list_restaurant__container');
     const errorContainer = document.querySelector('.error__container');
 

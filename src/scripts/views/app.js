@@ -2,7 +2,7 @@ import UrlParser from '../routes/url-parser';
 import routes from '../routes/routes';
 
 class App {
-  constructor({
+  constructor ({
     button, drawer, content, skipLink,
   }) {
     this._button = button;
@@ -13,25 +13,25 @@ class App {
     this._initialAppShell();
   }
 
-  _initialAppShell() {
+  _initialAppShell () {
     this._initialDrawer();
     this.initialSkipLink();
   }
 
-  _initialDrawer() {
+  _initialDrawer () {
     this._button.addEventListener('click', () => {
       this._drawer.classList.toggle('active');
     });
   }
 
-  initialSkipLink() {
+  initialSkipLink () {
     this._skipLink.addEventListener('click', () => {
       this._content.tabIndex = 0;
       this._content.focus();
     });
   }
 
-  async renderPage() {
+  async renderPage () {
     const url = UrlParser.parseActiveUrlWithCombiner();
     const page = routes[url];
     this._content.innerHTML = await page.render();

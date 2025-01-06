@@ -1,11 +1,11 @@
 import './DetailRestaurantInformation.scss';
 
 class DetailRestaurantInformation extends HTMLElement {
-  set detailRestaurantData(data) {
+  set detailRestaurantData (data) {
     this.render(data);
   }
 
-  render(data) {
+  render (data) {
     const {
       name,
       description,

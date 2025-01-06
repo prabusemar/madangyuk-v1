@@ -1,11 +1,11 @@
 import './Footer.scss';
 
 class Footer extends HTMLElement {
-  connectedCallback() {
+  connectedCallback () {
     this.render();
   }
 
-  render() {
+  render () {
     this.innerHTML = `
     <footer class="footer">
       <p>Copyright &copy; 2025 MadangYuk</p>
